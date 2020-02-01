@@ -16,7 +16,20 @@ def query_example():
 
 @app.route('/json_example',methods=['POST'])
 def json_example():
-    return '....'
+    req_data = request.get_json()
+
+    device = req_data['device']
+    val_temp = req_data['value']
+    timestamp = req_data['timestamp']
+
+    return '''<h1>device {}<h1>'''.format(device)
+
+# @app.route('/json_example',methods=['GET'])
+# def json_view():
+
+#     return "device {}".format(device)
+
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
